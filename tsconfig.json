@@ -29,7 +29,8 @@
     "next-auth.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "components/footer.tsx"
   ],
   "exclude": ["node_modules"]
 }
