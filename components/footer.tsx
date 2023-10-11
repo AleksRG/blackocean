@@ -1,21 +1,13 @@
 import React from 'react'
-import { cn } from '@/lib/utils'
 import { ExternalLink } from '@/components/external-link'
 
-export function FooterText({
-  className,
-  ...props
-}: React.ComponentProps<'div'>) {
+function FooterText() {
   return (
-    <div
-      className={cn(
-        'px-2 text-center text-xs leading-normal text-muted-foreground',
-        className
-      )}
-      {...props}
-    >
+    <div className="px-2 text-center text-xs leading-normal text-muted-foreground hidden sm:block">
       Black Ocean AI Checker from{' '}
       <ExternalLink href="https://nextjs.org">AlexRG</ExternalLink>
     </div>
   )
 }
+
+export default FooterText

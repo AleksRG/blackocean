@@ -2,11 +2,16 @@
 import * as React from 'react'
 import { useTheme } from 'next-themes'
 import { Button } from '@/components/ui/button'
-import { IconMoon, IconSun } from '@/components/ui/icons'
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
+import { useState, useEffect } from 'react'
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme()
   const [_, startTransition] = React.useTransition()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <Button
@@ -18,10 +23,12 @@ export function ThemeToggle() {
         })
       }}
     >
-      {!theme ? null : theme === 'dark' ? (
-        <IconMoon className="transition-all" />
+      {!mounted ? (
+        ''
+      ) : !theme ? null : theme === 'dark' ? (
+        <MoonIcon className="transition-all" />
       ) : (
-        <IconSun className="transition-all" />
+        <SunIcon className="transition-all" />
       )}
       <span className="sr-only">Toggle theme</span>
     </Button>
