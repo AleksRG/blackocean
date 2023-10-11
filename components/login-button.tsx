@@ -1,11 +1,24 @@
 'use client'
 
 import * as React from 'react'
-import { signIn } from 'next-auth/react'
+import { useWallet } from '@solana/wallet-adapter-react'
+import dynamic from 'next/dynamic'
+const WalletMultiButtonDynamic = dynamic(
+  async () =>
+    (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
+  { ssr: false }
+)
+
+const WalletDisconnectButtonDynamic = dynamic(
+  async () =>
+    (await import('@solana/wallet-adapter-react-ui')).WalletDisconnectButton,
+  { ssr: false }
+)
 
 import { cn } from '@/lib/utils'
 import { Button, type ButtonProps } from '@/components/ui/button'
-import { IconGitHub, IconSpinner } from '@/components/ui/icons'
+import { IconArrowElbow, IconSpinner } from '@/components/ui/icons'
+import { useTheme } from 'next-themes'
 
 interface LoginButtonProps extends ButtonProps {
   showGithubIcon?: boolean
@@ -18,23 +31,37 @@ export function LoginButton({
   className,
   ...props
 }: LoginButtonProps) {
-  const [isLoading, setIsLoading] = React.useState(false)
+  const { publicKey } = useWallet()
+
   return (
-    <Button
-      variant="outline"
-      onClick={() => {
-        setIsLoading(true)
-      }}
-      disabled={isLoading}
-      className={cn(className)}
-      {...props}
-    >
-      {isLoading ? (
-        <IconSpinner className="mr-2 animate-spin" />
-      ) : showGithubIcon ? (
-        ''
-      ) : null}
-      {text}
+    <Button className={cn(className)} {...props} variant="secondary">
+      {!publicKey ? (
+        <WalletMultiButtonDynamic
+          style={{
+            fontSize: 15,
+            fontWeight: 'normal',
+            background: 'transparent',
+            height: 0
+          }}
+        >
+          <span className="px-2 text-center text-xs leading-normal text-muted-foreground ">
+            Connect
+          </span>
+        </WalletMultiButtonDynamic>
+      ) : (
+        <WalletDisconnectButtonDynamic
+          style={{
+            fontSize: 15,
+            fontWeight: 'normal',
+            background: 'transparent'
+          }}
+        >
+          {' '}
+          <span className="px-2 text-center text-xs leading-normal text-muted-foreground ">
+            Disconnect
+          </span>
+        </WalletDisconnectButtonDynamic>
+      )}{' '}
     </Button>
   )
 }

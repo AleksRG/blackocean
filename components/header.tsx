@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { IconVercel } from '@/components/ui/icons'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { LoginButton } from '@/components/login-button'
