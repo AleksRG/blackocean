@@ -5,7 +5,6 @@ import { fontMono, fontSans } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 import { Providers } from '@/components/providers'
 import { Header } from '@/components/header'
-
 export const metadata: Metadata = {
   title: {
     default: 'Next.js AI Chatbot',
@@ -43,7 +42,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Providers attribute="class" defaultTheme="system" enableSystem>
           <div className="flex flex-col min-h-screen background ">
             {/* @ts-ignore */}
-            {/*  */}
             <Header />
             <main className="flex flex-col flex-1 bg-muted/50">{children}</main>
           </div>
