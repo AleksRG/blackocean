@@ -7,16 +7,16 @@ import { Providers } from '@/components/providers'
 import { Header } from '@/components/header'
 export const metadata: Metadata = {
   title: {
-    default: 'Next.js AI Chatbot',
-    template: `%s - Next.js AI Chatbot`
+    default: 'Black Ocean AI Checker',
+    template: `%s - Black Ocean AI Checker`
   },
-  description: 'An AI-powered chatbot template built with Next.js and Vercel.',
+  description: 'An AI-powered chatbot for crypto tokens.',
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' }
   ],
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon-16x16.png',
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png'
   }
@@ -40,7 +40,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         {' '}
         <Toaster />
         <Providers attribute="class" defaultTheme="system" enableSystem>
-          <div className="flex flex-col min-h-screen background ">
+          <div className="flex flex-col min-h-screen background">
             {/* @ts-ignore */}
             <Header />
             <main className="flex flex-col flex-1 bg-muted/50">{children}</main>

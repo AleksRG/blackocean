@@ -15,10 +15,7 @@ const WalletDisconnectButtonDynamic = dynamic(
   { ssr: false }
 )
 
-import { cn } from '@/lib/utils'
-import { Button, type ButtonProps } from '@/components/ui/button'
-import { IconArrowElbow, IconSpinner } from '@/components/ui/icons'
-import { useTheme } from 'next-themes'
+import { type ButtonProps } from '@/components/ui/button'
 
 interface LoginButtonProps extends ButtonProps {
   showGithubIcon?: boolean
@@ -34,7 +31,8 @@ export function LoginButton({
   const { publicKey } = useWallet()
 
   return (
-    <Button className={cn(className)} {...props} variant="secondary">
+    // <Button className={cn(className)} {...props} variant="secondary">
+    <>
       {!publicKey ? (
         <WalletMultiButtonDynamic
           style={{
@@ -62,6 +60,7 @@ export function LoginButton({
           </span>
         </WalletDisconnectButtonDynamic>
       )}{' '}
-    </Button>
+    </>
+    // </Button>
   )
 }
