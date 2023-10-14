@@ -71,7 +71,12 @@ export function ChatMessage({ message, ...props }: ChatMessageProps) {
             }
           }}
         >
-          {message.content}
+          {message.role === 'user'
+            ? message.content
+                .split('\n')
+                .find(line => line.includes('Name: '))
+                ?.substring(7) || 'Token name not found'
+            : message.content}
         </MemoizedReactMarkdown>
         <ChatMessageActions message={message} />
       </div>
