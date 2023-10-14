@@ -5,12 +5,21 @@ import { fontMono, fontSans } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 import { Providers } from '@/components/providers'
 import { Header } from '@/components/header'
+
+const title = 'Black Ocean AI Checker'
+const description = 'An AI-powered chatbot for crypto tokens.'
 export const metadata: Metadata = {
-  title: {
-    default: 'Black Ocean AI Checker',
-    template: `%s - Black Ocean AI Checker`
+  title,
+  description,
+
+  openGraph: {
+    title,
+    description
   },
-  description: 'An AI-powered chatbot for crypto tokens.',
+  twitter: {
+    card: 'summary_large_image',
+    creator: '@AlexRG'
+  },
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' }
@@ -19,7 +28,8 @@ export const metadata: Metadata = {
     icon: '/favicon-16x16.png',
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png'
-  }
+  },
+  metadataBase: new URL('https://blackocean-aleksrg.vercel.app/')
 }
 
 interface RootLayoutProps {
