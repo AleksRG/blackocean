@@ -17,6 +17,8 @@
   - Styling with [Tailwind CSS](https://tailwindcss.com)
   - [Radix UI](https://radix-ui.com) for headless component primitives
   - Icons from [Phosphor Icons](https://phosphoricons.com)
+- [Solana Web3 JS](https://docs.solana.com/developing/clients/javascript-api)
+- [Wallet Adapter](https://github.com/solana-labs/wallet-adapter)
 
 ## Model Providers
 
