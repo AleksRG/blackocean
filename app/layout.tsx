@@ -5,7 +5,7 @@ import { fontMono, fontSans } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 import { Providers } from '@/components/providers'
 import { Header } from '@/components/header'
-
+import { Analytics } from '@vercel/analytics/react'
 const title = 'Black Ocean AI Checker'
 const description = 'An AI-powered chatbot for crypto tokens.'
 export const metadata: Metadata = {
@@ -53,7 +53,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <div className="flex flex-col min-h-screen background">
             {/* @ts-ignore */}
             <Header />
-            <main className="flex flex-col flex-1 bg-muted/50">{children}</main>
+            <main className="flex flex-col flex-1 bg-muted/50">
+              {children}
+              <Analytics />
+            </main>
           </div>
         </Providers>
       </body>
